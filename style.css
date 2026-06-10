@@ -1,0 +1,18 @@
+/* Animasi background glow */
+.glow-effect {
+  position: relative;
+}
+.glow-effect::after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(45deg, #FF3E3E, #FF8000, #FF3E3E);
+  z-index: -1;
+  border-radius: 0.75rem;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.glow-effect:hover::after {
+  opacity: 1;
+}

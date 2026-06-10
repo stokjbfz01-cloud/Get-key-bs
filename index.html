@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HiFin - Get Key Blood Strike</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome untuk ikon menarik -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts - Inter & Rajdhani untuk nuansa gaming futuristik -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            gaming: ['Rajdhani', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              dark: '#0B0F19',
+              card: '#151D30',
+              accent: '#FF3E3E', // Merah khas Blood Strike
+              accentHover: '#E02E2E',
+              success: '#10B981',
+              warning: '#F59E0B',
+            }
+          },
+          boxShadow: {
+            'neon-red': '0 0 15px rgba(255, 62, 62, 0.4)',
+            'neon-green': '0 0 15px rgba(16, 185, 129, 0.4)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-brand-dark text-gray-100 min-h-screen flex flex-col justify-between font-sans selection:bg-brand-accent selection:text-white">
+
+  <!-- Header / Navigation -->
+  <header class="border-b border-gray-800/80 bg-brand-dark/50 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-md mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <span class="text-brand-accent text-2xl font-gaming font-bold tracking-widest">HIFIN</span>
+        <span class="bg-brand-accent/10 text-brand-accent text-xs px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider border border-brand-accent/20">GET KEY</span>
+      </div>
+      <div class="text-xs text-gray-400 bg-gray-900 px-3 py-1 rounded-md border border-gray-800">
+        <i class="fa-solid fa-signal text-brand-success mr-1 animate-pulse"></i> Online
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="flex-grow flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-md">
+
+      <!-- ================= HALAMAN 1: LANDING PAGE ================= -->
+      <section id="page-1" class="space-y-8 py-4">
+        <div class="text-center space-y-4">
+          <div class="inline-flex p-4 bg-brand-accent/10 border border-brand-accent/30 rounded-2xl mb-2 animate-bounce">
+            <i class="fa-solid fa-key text-brand-accent text-4xl"></i>
+          </div>
+          <h1 class="text-5xl font-gaming font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-100 to-brand-accent">
+            HIFIN
+          </h1>
+          <p class="text-lg text-gray-300 font-medium tracking-wide uppercase">
+            Get Key Blood Strike
+          </p>
+          <p class="text-sm text-gray-400 max-w-xs mx-auto">
+            Selesaikan verifikasi saluran WhatsApp terlebih dahulu untuk mendapatkan akses kunci yang valid.
+          </p>
+        </div>
+
+        <div class="bg-brand-card/50 border border-gray-800/80 rounded-2xl p-6 backdrop-blur-sm space-y-4">
+          <div class="flex items-start space-x-3 text-xs text-gray-400">
+            <i class="fa-solid fa-circle-info text-brand-accent mt-0.5"></i>
+            <span>Sistem kami memvalidasi keaslian kunjungan Anda sebelum membagikan lisensi key gratis ini.</span>
+          </div>
+          
+          <button id="btn-start" class="w-full py-4 bg-brand-accent hover:bg-brand-accentHover text-white font-gaming font-bold text-lg rounded-xl transition duration-300 shadow-neon-red tracking-wider uppercase flex items-center justify-center space-x-2 transform hover:-translate-y-0.5 active:translate-y-0">
+            <span>Mulai Get Key</span>
+            <i class="fa-solid fa-arrow-right text-sm"></i>
+          </button>
+        </div>
+      </section>
+
+
+      <!-- ================= HALAMAN 2: PROSES VERIFIKASI ================= -->
+      <section id="page-2" class="hidden space-y-6 py-2">
+        
+        <!-- Header Info Page 2 -->
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-gaming font-bold tracking-wider">Langkah Verifikasi</h2>
+          <p class="text-xs text-gray-400">Silakan ikuti atau klik kedua saluran WA di bawah ini agar tombol "Dapatkan Key" terbuka.</p>
+        </div>
+
+        <!-- Task Card Container -->
+        <div class="bg-brand-card border border-gray-800 rounded-2xl p-6 space-y-6 shadow-xl relative overflow-hidden">
+          
+          <!-- Indikator Status -->
+          <div class="grid grid-cols-2 gap-3 text-xs font-semibold">
+            <div class="bg-brand-dark/80 p-3 rounded-xl border border-gray-800 flex flex-col justify-between space-y-1">
+              <span class="text-gray-400 uppercase tracking-wider">Saluran 1</span>
+              <span id="status-ch1" class="text-brand-accent flex items-center space-x-1">
+                <span class="w-2 h-2 rounded-full bg-brand-accent inline-block animate-ping mr-1"></span>
+                <span>Belum Diklik</span>
+              </span>
+            </div>
+            <div class="bg-brand-dark/80 p-3 rounded-xl border border-gray-800 flex flex-col justify-between space-y-1">
+              <span class="text-gray-400 uppercase tracking-wider">Saluran 2</span>
+              <span id="status-ch2" class="text-brand-accent flex items-center space-x-1">
+                <span class="w-2 h-2 rounded-full bg-brand-accent inline-block animate-ping mr-1"></span>
+                <span>Belum Diklik</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Buttons untuk Saluran WA -->
+          <div class="space-y-3">
+            <!-- Saluran 1 -->
+            <div class="relative">
+              <button id="btn-ch1" onclick="handleChannelClick(1, 'https://whatsapp.com/channel/0029VbCCbN9AojYwc7gebK3D')" class="w-full py-4 px-4 bg-brand-dark hover:bg-gray-900 border border-gray-800 hover:border-gray-700 rounded-xl flex items-center justify-between transition duration-200">
+                <span class="flex items-center space-x-3">
+                  <span class="w-8 h-8 rounded-lg bg-green-500/10 text-green-500 flex items-center justify-center">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                  </span>
+                  <span class="font-medium text-sm text-left">Ikuti Saluran HiFin 1</span>
+                </span>
+                <span id="badge-ch1" class="text-xs bg-gray-800 text-gray-400 px-2.5 py-1 rounded-md font-semibold flex items-center space-x-1">
+                  <span>Kunjungi</span>
+                  <i class="fa-solid fa-up-right-from-square text-[10px]"></i>
+                </span>
+              </button>
+              <!-- Progress Overlay Ch 1 -->
+              <div id="loading-overlay-1" class="hidden absolute inset-0 bg-brand-dark/95 border border-brand-accent/40 rounded-xl flex items-center justify-between px-4">
+                <div class="flex items-center space-x-3">
+                  <div class="w-5 h-5 border-2 border-brand-accent border-t-transparent rounded-full animate-spin"></div>
+                  <span class="text-xs font-semibold text-brand-accent">Mengarahkan... Mohon tunggu 5s</span>
+                </div>
+                <span id="countdown-1" class="text-sm font-gaming font-bold text-brand-accent bg-brand-accent/10 px-3 py-1 rounded-md">5s</span>
+              </div>
+            </div>
+
+            <!-- Saluran 2 -->
+            <div class="relative">
+              <button id="btn-ch2" onclick="handleChannelClick(2, 'https://whatsapp.com/channel/0029Vb75VQWA2pL9MTcaeQ31')" class="w-full py-4 px-4 bg-brand-dark hover:bg-gray-900 border border-gray-800 hover:border-gray-700 rounded-xl flex items-center justify-between transition duration-200">
+                <span class="flex items-center space-x-3">
+                  <span class="w-8 h-8 rounded-lg bg-green-500/10 text-green-500 flex items-center justify-center">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                  </span>
+                  <span class="font-medium text-sm text-left">Ikuti Saluran HiFin 2</span>
+                </span>
+                <span id="badge-ch2" class="text-xs bg-gray-800 text-gray-400 px-2.5 py-1 rounded-md font-semibold flex items-center space-x-1">
+                  <span>Kunjungi</span>
+                  <i class="fa-solid fa-up-right-from-square text-[10px]"></i>
+                </span>
+              </button>
+              <!-- Progress Overlay Ch 2 -->
+              <div id="loading-overlay-2" class="hidden absolute inset-0 bg-brand-dark/95 border border-brand-accent/40 rounded-xl flex items-center justify-between px-4">
+                <div class="flex items-center space-x-3">
+                  <div class="w-5 h-5 border-2 border-brand-accent border-t-transparent rounded-full animate-spin"></div>
+                  <span class="text-xs font-semibold text-brand-accent">Mengarahkan... Mohon tunggu 5s</span>
+                </div>
+                <span id="countdown-2" class="text-sm font-gaming font-bold text-brand-accent bg-brand-accent/10 px-3 py-1 rounded-md">5s</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="border-t border-gray-800 my-4"></div>
+
+          <!-- Main Key Submission Button -->
+          <div class="space-y-3">
+            <div class="flex justify-between items-center text-xs text-gray-400">
+              <span>Status Tombol Key:</span>
+              <span id="text-key-status" class="text-brand-accent font-semibold flex items-center">
+                <i class="fa-solid fa-lock mr-1.5 text-[10px]"></i> Terkunci
+              </span>
+            </div>
+            <button id="btn-get-key" disabled class="w-full py-4 bg-gray-800 text-gray-500 font-gaming font-bold text-lg rounded-xl transition duration-300 tracking-wider uppercase flex items-center justify-center space-x-2 cursor-not-allowed">
+              <i class="fa-solid fa-shield-halved text-sm"></i>
+              <span>Dapatkan Key</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ================= BAGIAN TAMPILAN KEY (MUNCUL SETELAH VERIFIKASI) ================= -->
+        <div id="key-container" class="hidden space-y-4 animate-[fadeIn_0.5s_ease-out]">
+          <div class="bg-gradient-to-b from-brand-card to-brand-dark border-2 border-brand-success/50 shadow-neon-green rounded-2xl p-6 space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 bg-brand-success rounded-full animate-pulse"></span>
+                <span class="text-xs text-brand-success font-semibold uppercase tracking-wider">Aktivasi Sukses</span>
+              </div>
+              <span class="text-[10px] text-gray-500 bg-gray-900 px-2 py-0.5 rounded border border-gray-800 font-mono">ID: <span id="key-index-indicator">0</span></span>
+            </div>
+            
+            <div class="bg-brand-dark border border-gray-800 rounded-xl p-4 flex items-center justify-between space-x-2">
+              <code id="key-output" class="text-brand-success font-mono font-bold tracking-wider text-sm select-all overflow-x-auto whitespace-nowrap scrollbar-none pr-2">
+                GEN-HIFIN-XXXXXXXX-XXXX
+              </code>
+              <button onclick="copyToClipboard()" class="bg-brand-success/10 hover:bg-brand-success text-brand-success hover:text-white border border-brand-success/30 px-4 py-2.5 rounded-lg transition duration-200 text-xs font-semibold flex items-center space-x-1.5 shrink-0">
+                <i class="fa-regular fa-copy"></i>
+                <span id="copy-text">Salin Key</span>
+              </button>
+            </div>
+            
+            <div class="text-[11px] text-gray-400 bg-brand-dark/40 p-3 rounded-lg border border-gray-800/50 flex items-start space-x-2">
+              <i class="fa-solid fa-triangle-exclamation text-brand-warning mt-0.5 shrink-0"></i>
+              <span>Silakan salin key di atas dan tempel di dalam game Blood Strike Anda. Setiap key hanya dapat dipakai satu kali.</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 translate-y-24 opacity-0 transition-all duration-300 bg-gray-900 border border-brand-success text-gray-100 text-xs px-6 py-3.5 rounded-xl shadow-2xl flex items-center space-x-2.5 z-50 pointer-events-none">
+    <i class="fa-solid fa-circle-check text-brand-success text-base"></i>
+    <span class="font-medium" id="toast-msg">Salinan Key Berhasil disimpan!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-900/80 bg-brand-dark/20 py-4 text-center text-[11px] text-gray-500">
+    <p>© 2026 HiFin Team. All Rights Reserved.</p>
+    <p class="mt-1 text-[9px] text-gray-600">Blood Strike is a trademark of NetEase Games. This site is not affiliated.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
